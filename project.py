@@ -15,7 +15,9 @@ df7 = pd.read_excel("D:/lam-du-an/FPT_17.05_31.05.xlsx")
 dfl = [df1, df2, df3, df4, df5, df6, df7]
 
 df_merged = reduce(lambda left, right: pd.merge(left, right, how="outer"), dfl)
-
+# Thêm 2 dòng ở đây
+df_merged['Ngày'] = pd.to_datetime(df_merged['Ngày'])
+df_merged['Ngày'] = df_merged['Ngày'].astype(str)
 print(df_merged)
 
 # Viết code dưới này
