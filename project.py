@@ -20,9 +20,6 @@ df_merged = reduce(lambda left, right: pd.merge(left, right, how="outer"), dfl)
 df_merged['Ngày'] = pd.to_datetime(df_merged['Ngày'])
 df_merged['Ngày'] = df_merged['Ngày'].astype(str)
 
-# df_merged['Giá theo ngày'] = df_merged['Bán: Giá trị (tỷ VNĐ)'] / df_merged['Bán: Khối lượng']
-# df_merged = df_merged.fillna(0)
-
 print(df_merged)
 
 # Viết code dưới này
