@@ -63,7 +63,7 @@ df_thamso['Khối lượng giao dịch bán'] = tham_so_khoi_luong_ban
 # plt.show()
 
 # Xuất ra file excel và căn chỉnh khoảng cách của column
-df_merged_writer = pd.ExcelWriter('D:/lam-du-an/test.xlsx', engine='xlsxwriter')
+df_merged_writer = pd.ExcelWriter('D:/lam-du-an/Bảng thống kê mã FPT trong 6 tháng.xlsx', engine='xlsxwriter')
 df_merged.to_excel(df_merged_writer, sheet_name='Khoi ngoai', index=False, na_rep='NaN')
 for column in df_merged:
     column_length = max(df_merged[column].astype(str).map(len).max(), len(column))
@@ -71,7 +71,7 @@ for column in df_merged:
     df_merged_writer.sheets['Khoi ngoai'].set_column(col_idx, col_idx, column_length)
 df_merged_writer._save()
 
-df_thamso_writer = pd.ExcelWriter('D:/lam-du-an/thamso.xlsx', engine='xlsxwriter')
+df_thamso_writer = pd.ExcelWriter('D:/lam-du-an/Các tham số của mã FPT.xlsx', engine='xlsxwriter')
 df_thamso.to_excel(df_thamso_writer, sheet_name='Sheet1', index=False, na_rep='NaN')
 for column in df_thamso:
     column_length = max(df_thamso[column].astype(str).map(len).max(), len(column))
