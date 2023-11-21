@@ -23,9 +23,8 @@ df_merged['Ngày'] = df_merged['Ngày'].astype(str)
 # Viết code dưới này
 
 # Tính giá cổ phiếu theo ngày
-df_merged['Giá cổ phiếu theo ngày'] = (df_merged['Bán: Giá trị (tỷ VNĐ)'] * 1000000000) / df_merged['Bán: Khối lượng']
+df_merged['Giá cổ phiếu theo ngày (VNĐ)'] = (df_merged['Bán: Giá trị (tỷ VNĐ)'] * 1000000000) / df_merged['Bán: Khối lượng']
 df_merged = df_merged.fillna(0)
-print(df_merged)
 
 # Tính các giá trị trung bình, phương sai, độ lệch chuẩn, tứ phân vị của các cột: kl giá trị ròng, kl mua, kl bán (câu 4)
 trung_binh = df_merged[['Giao dịch ròng: Khối lượng', 'Mua: Khối lượng', 'Bán: Khối lượng']].mean()
@@ -61,7 +60,7 @@ df_thamso['Khối lượng giao dịch bán'] = tham_so_khoi_luong_ban
 
 # Vẽ biểu đồ
 print(df_merged)
-plt.plot(df_merged['Mua: Khối lượng'])
+#plt.plot(df_merged['Mua: Khối lượng'])
 # plt.xlabel('Ngày')
 # plt.ylabel('Khối lượng')
 # plt.title('Xu hướng mua của khối ngoại')
