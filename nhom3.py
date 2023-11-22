@@ -9,7 +9,7 @@ df2 = pd.read_excel('D:/lam-du-an/Phan2.xlsx')
 df3 = pd.read_excel('D:/lam-du-an/Phan3.xlsx')
 df4 = pd.read_excel('D:/lam-du-an/Phan4.xlsx')
 
-# Merge data của 6 tháng lại thành 1 dataframe tổng
+# Merge data của 3 tháng lại thành 1 dataframe tổng
 dfl = [df1, df2, df3, df4]
 df_merged = reduce(lambda left, right: pd.merge(left, right, how='outer'), dfl)
 
