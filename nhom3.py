@@ -13,10 +13,6 @@ df4 = pd.read_excel('D:/lam-du-an/Phan4.xlsx')
 dfl = [df1, df2, df3, df4]
 df_merged = reduce(lambda left, right: pd.merge(left, right, how='outer'), dfl)
 
-# Sửa lỗi 00:00 trong file excel
-df_merged['Ngày'] = pd.to_datetime(df_merged['Ngày'])
-df_merged['Ngày'] = df_merged['Ngày'].astype(str)
-
 # Tính giá cổ phiếu theo ngày
 df_merged['Giá mua cổ phiếu theo ngày (VNĐ)'] = (df_merged['Mua: Giá trị (tỷ VNĐ)'] * 1000000000) / df_merged[
     'Mua: Khối lượng']
@@ -59,7 +55,6 @@ df_thamso['Khối lượng giao dịch bán'] = tham_so_khoi_luong_ban
 
 # Vẽ biểu đồ
 print(df_merged)
-df_merged['Ngày'] = pd.to_datetime(df_merged['Ngày'])
 arr = np.array([0] * len(df_merged['Ngày']))
 plt.plot(df_merged['Ngày'], df_merged['Giao dịch ròng: Khối lượng'], label='Khối lượng giao dịch ròng')
 plt.plot(df_merged['Ngày'], df_merged['Mua: Khối lượng'], label='Khối lượng mua')
@@ -73,6 +68,9 @@ plt.show()
 
 # Xuất ra file excel và căn chỉnh khoảng cách của column
 # Phải cài thư viện xlsxwriter
+# Sửa lỗi 00:00 trong file excel
+df_merged['Ngày'] = pd.to_datetime(df_merged['Ngày'])
+df_merged['Ngày'] = df_merged['Ngày'].astype(str)
 df_merged_writer = pd.ExcelWriter('D:/lam-du-an/Bảng thống kê mã FPT trong 6 tháng.xlsx', engine='xlsxwriter')
 df_merged.to_excel(df_merged_writer, sheet_name='Khoi ngoai', index=False, na_rep='NaN')
 for column in df_merged:
