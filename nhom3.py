@@ -4,14 +4,14 @@ import matplotlib.pyplot as plt
 from functools import reduce
 
 # Phần thêm data từ file excel và merge data
-df1 = pd.read_excel("D:/lam-du-an/Phan1.xlsx")
-df2 = pd.read_excel("D:/lam-du-an/Phan2.xlsx")
-df3 = pd.read_excel("D:/lam-du-an/Phan3.xlsx")
-df4 = pd.read_excel("D:/lam-du-an/Phan4.xlsx")
+df1 = pd.read_excel('D:/lam-du-an/Phan1.xlsx')
+df2 = pd.read_excel('D:/lam-du-an/Phan2.xlsx')
+df3 = pd.read_excel('D:/lam-du-an/Phan3.xlsx')
+df4 = pd.read_excel('D:/lam-du-an/Phan4.xlsx')
 
 # Merge data của 6 tháng lại thành 1 dataframe tổng
 dfl = [df1, df2, df3, df4]
-df_merged = reduce(lambda left, right: pd.merge(left, right, how="outer"), dfl)
+df_merged = reduce(lambda left, right: pd.merge(left, right, how='outer'), dfl)
 
 # Sửa lỗi 00:00 trong file excel
 df_merged['Ngày'] = pd.to_datetime(df_merged['Ngày'])
@@ -20,7 +20,6 @@ df_merged['Ngày'] = df_merged['Ngày'].astype(str)
 # Tính giá cổ phiếu theo ngày
 df_merged['Giá mua cổ phiếu theo ngày (VNĐ)'] = (df_merged['Mua: Giá trị (tỷ VNĐ)'] * 1000000000) / df_merged[
     'Mua: Khối lượng']
-
 df_merged['Giá bán cổ phiếu theo ngày (VNĐ)'] = (df_merged['Bán: Giá trị (tỷ VNĐ)'] * 1000000000) / df_merged[
     'Bán: Khối lượng']
 df_merged = df_merged.fillna(0)
