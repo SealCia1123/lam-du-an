@@ -59,14 +59,15 @@ df_thamso['Khối lượng giao dịch bán'] = tham_so_khoi_luong_ban
 
 # Vẽ biểu đồ
 print(df_merged)
+df_merged['Ngày'] = pd.to_datetime(df_merged['Ngày'])
 arr = np.array([0] * len(df_merged['Ngày']))
-plt.plot(df_merged['Ngày'], df_merged['Giao dịch ròng: Khối lượng'], linestyle='-.', label='Khối lượng giao dịch ròng')
-plt.plot(df_merged['Ngày'], df_merged['Mua: Khối lượng'], linestyle='--', label='Khối lượng mua')
-plt.plot(df_merged['Ngày'], df_merged['Bán: Khối lượng'], linestyle=':', label='Khối lượng bán')
-plt.plot(df_merged['Ngày'], arr, label='Điểm mua bằng bán')
+plt.plot(df_merged['Ngày'], df_merged['Giao dịch ròng: Khối lượng'], label='Khối lượng giao dịch ròng')
+plt.plot(df_merged['Ngày'], df_merged['Mua: Khối lượng'], label='Khối lượng mua')
+plt.plot(df_merged['Ngày'], df_merged['Bán: Khối lượng'], label='Khối lượng bán')
+plt.plot(df_merged['Ngày'], arr, label='Đường mua bằng bán')
 plt.ylabel('Khối lượng')
 plt.xlabel('Thời gian')
-plt.title('BIÊU ĐỒ XU HƯỚNG MUA, BÁN CỦA MÃ FPT')
+plt.title('BIỂU ĐỒ XU HƯỚNG MUA, BÁN CỦA MÃ FPT')
 plt.legend()
 plt.show()
 
