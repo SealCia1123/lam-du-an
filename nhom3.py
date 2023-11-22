@@ -18,7 +18,10 @@ df_merged['Ngày'] = pd.to_datetime(df_merged['Ngày'])
 df_merged['Ngày'] = df_merged['Ngày'].astype(str)
 
 # Tính giá cổ phiếu theo ngày
-df_merged['Giá cổ phiếu theo ngày (VNĐ)'] = (df_merged['Bán: Giá trị (tỷ VNĐ)'] * 1000000000) / df_merged[
+df_merged['Giá mua cổ phiếu theo ngày (VNĐ)'] = (df_merged['Mua: Giá trị (tỷ VNĐ)'] * 1000000000) / df_merged[
+    'Mua: Khối lượng']
+
+df_merged['Giá bán cổ phiếu theo ngày (VNĐ)'] = (df_merged['Bán: Giá trị (tỷ VNĐ)'] * 1000000000) / df_merged[
     'Bán: Khối lượng']
 df_merged = df_merged.fillna(0)
 
