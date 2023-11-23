@@ -14,10 +14,10 @@ dfl = [df1, df2, df3, df4]
 df_merged = reduce(lambda left, right: pd.merge(left, right, how='outer'), dfl)
 
 # Tính giá cổ phiếu theo ngày
-df_merged['Giá mua cổ phiếu theo ngày (VNĐ)'] = (df_merged['Mua: Giá trị (tỷ VNĐ)'] * 1000000000) / df_merged[
-    'Mua: Khối lượng']
-df_merged['Giá bán cổ phiếu theo ngày (VNĐ)'] = (df_merged['Bán: Giá trị (tỷ VNĐ)'] * 1000000000) / df_merged[
-    'Bán: Khối lượng']
+df_merged['Giá mua cổ phiếu theo ngày (VNĐ)'] = round((df_merged['Mua: Giá trị (tỷ VNĐ)'] * 1000000000) / df_merged[
+    'Mua: Khối lượng'], 2)
+df_merged['Giá bán cổ phiếu theo ngày (VNĐ)'] = round((df_merged['Bán: Giá trị (tỷ VNĐ)'] * 1000000000) / df_merged[
+    'Bán: Khối lượng'], 2)
 df_merged = df_merged.fillna(0)
 
 # Tính các giá trị trung bình, phương sai, độ lệch chuẩn, tứ phân vị của các cột:
@@ -52,6 +52,10 @@ df_thamso = pd.DataFrame(tham_so)
 df_thamso['Khối lượng giao dịch ròng'] = tham_so_khoi_luong_rong
 df_thamso['Khối lượng giao dịch mua'] = tham_so_khoi_luong_mua
 df_thamso['Khối lượng giao dịch bán'] = tham_so_khoi_luong_ban
+
+df_thamso['Khối lượng giao dịch ròng'] = round(df_thamso['Khối lượng giao dịch ròng'], 3)
+df_thamso['Khối lượng giao dịch mua'] = round(df_thamso['Khối lượng giao dịch mua'], 3)
+df_thamso['Khối lượng giao dịch bán'] = round(df_thamso['Khối lượng giao dịch bán'], 3)
 
 # Vẽ biểu đồ
 print(df_merged)
