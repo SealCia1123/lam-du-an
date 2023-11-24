@@ -64,6 +64,7 @@ plt.plot(df_merged['Ngày'], df_merged['Giao dịch ròng: Khối lượng'], la
 plt.plot(df_merged['Ngày'], df_merged['Mua: Khối lượng'], label='Khối lượng mua')
 plt.plot(df_merged['Ngày'], df_merged['Bán: Khối lượng'], label='Khối lượng bán')
 plt.plot(df_merged['Ngày'], arr, label='Đường mua bằng bán')
+plt.gca().ticklabel_format(axis='y', style='plain')
 plt.ylabel('Khối lượng')
 plt.xlabel('Thời gian')
 plt.title('BIỂU ĐỒ XU HƯỚNG MUA, BÁN CỦA MÃ FPT')
