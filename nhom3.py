@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from functools import reduce
+# Phải cài thư viện xlsxwriter
 
 # Phần thêm data từ file excel và merge data
 df1 = pd.read_excel('D:/lam-du-an/Phan1.xlsx')
@@ -72,7 +73,6 @@ plt.legend()
 plt.show()
 
 # Xuất ra file excel và căn chỉnh khoảng cách của column
-# Phải cài thư viện xlsxwriter
 # Sửa lỗi 00:00 trong file excel
 df_merged['Ngày'] = pd.to_datetime(df_merged['Ngày'])
 df_merged['Ngày'] = df_merged['Ngày'].astype(str)
